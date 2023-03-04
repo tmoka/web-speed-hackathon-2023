@@ -1,11 +1,11 @@
 import { useFormik } from 'formik';
 import type { ChangeEventHandler, FC } from 'react';
-import zipcodeJa from 'zipcode-ja';
 
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 import { TextInput } from '../../foundation/TextInput';
 
 import * as styles from './OrderForm.styles';
+
 
 type OrderFormValue = {
   zipCode: string;
@@ -18,6 +18,7 @@ type Props = {
   onSubmit: (orderFormValue: OrderFormValue) => void;
 };
 
+
 export const OrderForm: FC<Props> = ({ onSubmit }) => {
   const formik = useFormik<OrderFormValue>({
     initialValues: {
@@ -29,10 +30,19 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
     onSubmit,
   });
 
+  let zipcodeJa:any;
+
+  const load = async() => {
+    zipcodeJa = await import('zipcode-ja')
+  }
+  load()
+
   const handleZipcodeChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     formik.handleChange(event);
 
     const zipCode = event.target.value;
+    if(zipCode.length !== 7 )return;
+
     const address = zipcodeJa[zipCode]?.address ?? [];
     const prefecture = address.shift();
     const city = address.join(' ');
