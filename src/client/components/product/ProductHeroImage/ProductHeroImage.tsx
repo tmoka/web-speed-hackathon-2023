@@ -1,6 +1,5 @@
 
 import classNames from 'classnames';
-import _ from 'lodash';
 import { memo, useEffect } from 'react';
 import type { FC } from 'react';
 
@@ -94,6 +93,6 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
       }}
     </GetDeviceType>
   );
-}, _.isEqual);
+});
 
 ProductHeroImage.displayName = 'ProductHeroImage';
