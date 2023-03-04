@@ -29,7 +29,7 @@ export default defineConfig(async () => {
     build: {
       assetsInlineLimit: 20480,
       cssCodeSplit: true,
-      cssTarget: 'es6',
+      cssTarget: 'chrome109',
       minify: true,
       rollupOptions: {
         output: {
@@ -39,7 +39,7 @@ export default defineConfig(async () => {
           visualizer(),
         ]
       },
-      target: 'es2015',
+      target: 'chrome109',
     },
     plugins: [
       react(),
