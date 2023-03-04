@@ -18,3 +18,16 @@ export const Image: FC<Props> = ({ fill, ...rest }) => {
     />
   );
 };
+
+export const LogoImage: FC<Props> = ({ fill, ...rest }) => {
+  return (
+    <img
+      className={classNames(styles.container(), {
+        [styles.container__fill()]: fill === true,
+      })}
+      loading="eager"
+      {...rest}
+    />
+  );
+};
+
