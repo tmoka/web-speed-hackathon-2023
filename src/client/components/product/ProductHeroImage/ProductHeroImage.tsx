@@ -1,8 +1,7 @@
-import CanvasKitInit from 'canvaskit-wasm';
-import CanvasKitWasmUrl from 'canvaskit-wasm/bin/canvaskit.wasm?url';
+
 import classNames from 'classnames';
 import _ from 'lodash';
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect } from 'react';
 import type { FC } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
@@ -13,6 +12,7 @@ import { WidthRestriction } from '../../foundation/WidthRestriction';
 
 import * as styles from './ProductHeroImage.styles';
 
+/*
 async function loadImageAsDataURL(url: string): Promise<string> {
   const CanvasKit = await CanvasKitInit({
     // WASM ファイルの URL を渡す
@@ -34,6 +34,7 @@ async function loadImageAsDataURL(url: string): Promise<string> {
   ctx?.drawImage(image, 0, 0);
   return canvas.toDataURL();
 }
+*/
 
 type Props = {
   product: ProductFragmentResponse;
@@ -43,18 +44,19 @@ type Props = {
 export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
   const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
 
-  const [imageDataUrl, setImageDataUrl] = useState<string>();
+  //const [imageDataUrl, setImageDataUrl] = useState<string>();
 
   useEffect(() => {
     if (thumbnailFile == null) {
       return;
     }
-    loadImageAsDataURL(thumbnailFile.filename).then((dataUrl) => setImageDataUrl(dataUrl));
+    //loadImageAsDataURL(thumbnailFile.filename).then((dataUrl) => setImageDataUrl(dataUrl));
   }, [thumbnailFile]);
-
+/*
   if (imageDataUrl === undefined) {
     return null;
   }
+  */
 
   return (
     <GetDeviceType>
@@ -64,7 +66,7 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
             <Anchor href={`/product/${product.id}`}>
               <div className={styles.container()}>
                 <AspectRatio ratioHeight={9} ratioWidth={16}>
-                  <img className={styles.image()} src={imageDataUrl.replace('.jpg', '.avif')} />
+                  <img className={styles.image()} src={thumbnailFile?.filename.replace('.jpg', '.avif')} style={{'objectFit': 'cover'}}/>
                 </AspectRatio>
 
                 <div className={styles.overlay()}>
