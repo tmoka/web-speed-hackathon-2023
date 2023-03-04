@@ -4,9 +4,11 @@ import path from 'node:path';
 import react from '@vitejs/plugin-react';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
+import viteCompression from 'vite-plugin-compression';
 import { ViteEjsPlugin } from 'vite-plugin-ejs';
 import topLevelAwait from 'vite-plugin-top-level-await';
 import wasm from 'vite-plugin-wasm';
+
 
 import { getFileList } from './tools/get_file_list';
 
@@ -37,6 +39,7 @@ export default defineConfig(async () => {
         },
         plugins: [
           visualizer(),
+          viteCompression(),
         ]
       },
       target: 'chrome109',
