@@ -1,0 +1,10 @@
+./products/tomato/001.avif
+./products/tomato/002.avif
+./products/tomato/003.avif
+./products/tomato/004.avif
+./products/tomato/005.avif
+./products/tomato/006.avif
+./products/tomato/007.avif
+./products/tomato/008.avif
+./products/tomato/009.avif
+./products/tomato/010.avif
