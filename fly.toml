@@ -1,3 +1,6 @@
+# fly.toml file generated for blue-lake-5271 on 2023-03-04T11:03:09+09:00
+
+app = "blue-lake-5271"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
